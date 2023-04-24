@@ -1,13 +1,79 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Neon effect */
+.neonText {
+  animation: flicker 1.5s infinite alternate;
+  color: #fff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Flickering animation */
+@keyframes flicker {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px yellow,
+      0 0 80px yellow, 0 0 90px yellow;
+  }
+
+  20%,
+  24%,
+  55% {
+    text-shadow: none;
+  }
+}
+
+/* star effect */
+.star {
+  position: relative;
+  display: flex;
+}
+
+.star span {
+  position: relative;
+  width: 5px;
+  height: 5px;
+  background-color: #f7a6f7;
+  margin: 0 4px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 10px #e979ec44, 0 0 50px #f7a6f7, 0 0 100px #f7a6f7;
+  animation: animate 15s linear infinite;
+  animation-duration: calc(240s / var(--star));
+}
+
+.star span:nth-child(even) {
+  background-color: #ffffc3;
+  box-shadow: 0 0 0 5px #ffffc3, 0 0 25px #ffffc3, 0 0 50px #ffffc3;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(-10vh) scale(0.2);
+  }
+  50% {
+    transform: translateY(50vh) scale(0.3);
+  }
+  100% {
+    transform: translateY(100vh) scale(0.2);
+  }
+}
+
+.rainbow {
+  background-image: linear-gradient(
+    to right,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    purple
+  );
+  -webkit-background-clip: text;
+  color: transparent;
 }

@@ -108,13 +108,13 @@ const Launchpad = ({ account, setAccount }) => {
     }
   };
 
-  // const [rotateImgSrc, setImgSrc] = useState("");
+  const [rotateImgSrc, setRotateImgSrc] = useState("");
 
   const rotateImage = () => {
     const ranNum = Math.floor(Math.random() * 50) + 1;
     const imgSrc = `${process.env.PUBLIC_URL}/images/Character/${ranNum}.png`;
 
-    // setImgSrc(getImgSrc);
+    setRotateImgSrc(imgSrc);
   };
 
   useEffect(() => {
@@ -128,7 +128,7 @@ const Launchpad = ({ account, setAccount }) => {
     const intervalId = setInterval(() => {
       rotateImage();
       getMintedNft();
-    }, 5000);
+    }, 3000);
     return () => clearInterval(intervalId);
   }, []);
 
@@ -149,13 +149,15 @@ const Launchpad = ({ account, setAccount }) => {
       </div>
       <div className="border border-blue-200 h-2/3 p-10 flex justify-between rounded-2xl mt-10">
         <img
-          src={imgSrc}
+          src={rotateImgSrc}
           className="w-[512px] h-[512px] rounded-2xl overflow-hidden"
         />
         <div className="flex flex-col justify-between">
           <div className="flex flex-col mr-10">
             <div>퍼블릭 세일 진행중</div>
-            <div className="font-bold text-5xl mt-3">Collection Name</div>
+            <div className="font-bold text-5xl mt-3 tracking-wider">
+              Cycle of Season
+            </div>
             <div className="text-xl mt-8">총 발행량</div>
             <div className="text-2xl font-bold">{totalNft} 개</div>
           </div>

@@ -9,8 +9,8 @@ const LaunchProject = ({ totalNft }) => {
     <div className="my-20">
       <div className="font-bold text-2xl mb-8 rainbow">Launch Project</div>
       <div>
-        <div className="flex mb-20 text-white">
-          <div className=" flex border border-gray-600 p-4 rounded-xl justify-between shadow-sm shadow-gray-600 mr-20 w-[512px]">
+        <div className="flex mb-20 text-white justify-between">
+          <div className=" flex border border-gray-600 p-4 rounded-xl justify-between shadow-sm shadow-gray-600 w-[512px]">
             <img src={imgSrc} className="w-48 rounded-xl" />
             <div className="flex flex-col text-sm w-1/2">
               <div className="text-2xl text-gray-300 font-bold">
@@ -27,7 +27,7 @@ const LaunchProject = ({ totalNft }) => {
               </Link>
             </div>
           </div>
-          <div className=" flex border border-gray-600 p-4 rounded-xl justify-between shadow-sm shadow-gray-600 mr-24 w-[512px]">
+          <div className=" flex border border-gray-600 p-4 rounded-xl justify-between shadow-sm shadow-gray-600 w-[512px]">
             <img src={imgSrc2} className="w-48 rounded-xl" />
             <div className="flex flex-col text-sm w-1/2">
               <div className="text-xl text-gray-300 font-bold">Hot dog</div>

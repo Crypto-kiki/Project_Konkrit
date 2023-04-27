@@ -19,6 +19,10 @@ function App() {
             path="/Launchpad"
             element={<Launchpad account={account} setAccount={setAccount} />}
           />
+          <Route
+            path="/Collection"
+            element={<Collection account={account} setAccount={setAccount} />}
+          />
         </Routes>
       </div>
     </BrowserRouter>

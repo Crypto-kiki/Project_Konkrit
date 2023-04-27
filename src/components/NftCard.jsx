@@ -15,7 +15,7 @@ const NftCard = ({
   // 실시간 코인 가격 가져오기
 
   return (
-    <div className="font-bold text-xl text-gray-300 flex flex-row border border-gray-600 p-4 rounded-xl justify-start shadow-sm shadow-gray-600 overflow-hidden h-80">
+    <div className="font-bold text-xl text-gray-300 flex border border-gray-600 p-4 rounded-xl justify-start shadow-sm shadow-gray-600 overflow-hidden h-80">
       <div className="rounded-xl overflow-hidden">
         <img src={nftImage} className="w-96 h-48 object-cover" />
       </div>
@@ -23,21 +23,17 @@ const NftCard = ({
         <div className="text-gray-400">Collection Name</div>
         <div className="text-xl mb-2">{nftName}</div>
         <div className="text-gray-400">Contract Address</div>
-        <div className="mb-5 text-lg">{nftContract}</div>
+        <div className="mb-5 text-lg truncate">{nftContract}</div>
         <div className="text-gray-400">Total Balance</div>
         <div className="text-xl mb-2">{nftTotalBalance}</div>
         <div className="text-gray-400">Floor Price</div>
         {floorPrices ? (
-          <>
-            <div className="text-lg">
-              {floorPrices} eth{" "}
-              <span>
-                ({parseInt(floorPrices * ethPrice).toLocaleString()}원)
-              </span>
-            </div>
-          </>
+          <div className="text-lg">
+            {floorPrices} eth{" "}
+            <span>({parseInt(floorPrices * ethPrice).toLocaleString()}원)</span>
+          </div>
         ) : (
-          <div>None</div>
+          <div>0</div>
         )}
 
         <div className="flex flex-row justify-end items-center">

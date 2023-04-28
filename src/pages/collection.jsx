@@ -65,7 +65,7 @@ const Collection = ({ account, setAccount }) => {
           <div className="flex items-center">
             <div className="text-4xl font-bold">Cycle of Season</div>
             <a
-              href="https://testnets.opensea.io/account"
+              href="https://testnets.opensea.io/collection/cycle-of-season-1"
               target="_blank"
               className="bg-blue-500 w-8 h-8 rounded-full flex justify-center items-center text-white ml-4"
             >

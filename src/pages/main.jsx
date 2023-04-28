@@ -26,11 +26,12 @@ const Main = ({ account, setAccount }) => {
   const [webUrl, setWebUrl] = useState("");
   const [nftName, setNftName] = useState("");
   const [nftContract, setNftContract] = useState([]);
-  const [nftTotalBalance, setNftTotalBalance] = useState("");
+  const [nftTotalBalance, setNftTotalBalance] = useState([]);
   const [floorPrices, setFloorPrices] = useState([]);
   const [nftImage, setNftImage] = useState("");
 
   const [totalNft, setTotalNft] = useState(0);
+  const [totalValue, setTotalValue] = useState(0);
 
   const [btcPrice, setBtcPrice] = useState("");
   const [ethPrice, setEthPrice] = useState("");
@@ -129,12 +130,6 @@ const Main = ({ account, setAccount }) => {
       console.error(error);
     }
   };
-  useEffect(() => {
-    const interval = setInterval(() => {
-      coinApi();
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
 
   // 런치패드 데이터 불러오기
 
@@ -188,6 +183,13 @@ const Main = ({ account, setAccount }) => {
     getMyNft();
   }, [account]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      coinApi();
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
       <div className="max-w-screen-xl mx-auto pb-10">
@@ -226,9 +228,9 @@ const Main = ({ account, setAccount }) => {
                   webUrl={v.opensea.externalUrl}
                   floorPrices={floorPrices[i]}
                   // floorPrices에 담긴 배열의 순서에 맞게 내려줘야 함.
-                  btcPrice={btcPrice}
                   ethPrice={ethPrice}
                   coinApi={coinApi}
+                  account={account}
                 />
               ))
             ) : (
@@ -241,7 +243,7 @@ const Main = ({ account, setAccount }) => {
           <div className="text-white h-80 border-gray-600 shadow-lg shadow-gray-600 border mt-8 rounded-lg flex flex-col justify-center items-center">
             <div>지갑을 연결해 주세요.</div>
             <button
-              className="border-gray-200 border rounded-xl px-5 py-2 text-gray-200 font-bold mt-4"
+              className="text-yellow-300 border-yellow-300 border rounded-xl px-5 py-2  font-bold mt-4 hover:bg-yellow-300 hover:text-gray-900"
               onClick={onClickAccount}
             >
               Wallet Connect

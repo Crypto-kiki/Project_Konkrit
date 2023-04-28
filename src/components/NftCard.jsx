@@ -12,8 +12,6 @@ const NftCard = ({
   webUrl,
   ethPrice,
 }) => {
-  // 실시간 코인 가격 가져오기
-
   return (
     <div className="font-bold text-xl text-gray-300 flex border border-gray-600 p-4 rounded-xl justify-start shadow-sm shadow-gray-600 overflow-hidden h-80">
       <div className="rounded-xl overflow-hidden">

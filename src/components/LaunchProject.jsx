@@ -21,7 +21,7 @@ const LaunchProject = ({ totalNft }) => {
               <div className="text-gray-400 mt-2">Mint Price</div>
               <div className="text-gray-300">0.01 Matic</div>
               <Link to={`/Launchpad`}>
-                <button className="w-full border border-gray-300 py-3 mt-4 rounded-xl font-bold text-yellow-300">
+                <button className="w-full border border-gray-300 py-3 mt-4 rounded-xl font-bold text-yellow-300 hover:bg-yellow-300 hover:text-gray-900">
                   Mint Now
                 </button>
               </Link>

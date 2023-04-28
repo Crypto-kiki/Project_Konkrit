@@ -20,11 +20,12 @@ const Header = ({
           test
         </div>
         <div className="ml-24 text-lg">
-          <a href="#myNft" className="mx-10">
-            My NFTs
-          </a>
+          <a href="#myNft">My NFTs</a>
           <Link to={`/Launchpad`}>
-            <span>Launchpad</span>
+            <span className="mx-10">Launchpad</span>
+          </Link>
+          <Link to={`/Collection`}>
+            <span>Collection</span>
           </Link>
         </div>
       </div>
@@ -65,7 +66,7 @@ const Header = ({
         ) : (
           <button
             onClick={onClickAccount}
-            className="border-yellow-300 border rounded-xl px-5 py-2 w-36 text-yellow-300 font-bold"
+            className="border-yellow-300 border rounded-xl px-5 py-2 w-36 text-yellow-300 font-bold hover:bg-yellow-300 hover:text-gray-900"
           >
             Wallet Connect
           </button>

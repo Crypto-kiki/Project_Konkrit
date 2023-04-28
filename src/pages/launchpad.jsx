@@ -3,7 +3,6 @@ import { CONTRACT_ABI } from "../web3.config";
 import { CONTRACT_ADDRESS } from "../web3.config";
 import Web3 from "web3";
 import axios from "axios";
-import { SiOpensea } from "react-icons/si";
 import { Link } from "react-router-dom";
 
 const web3 = new Web3(window.ethereum);
@@ -53,15 +52,15 @@ const Launchpad = ({ account, setAccount }) => {
 
   const onClickMint = async () => {
     try {
-      // 버튼을 찾아서 disabled 속성을 true로 설정
+      // // 버튼을 찾아서 disabled 속성을 true로 설정
       const mintButton = document.getElementById("mintButton");
       mintButton.disabled = true;
 
       // 민팅하면 해당 컨트랙트 보유 갯수.
       const balanceOf = await contract.methods.balanceOf(account).call();
 
-      if (balanceOf >= 1) {
-        alert("지갑당 1개만 민팅이 가능합니다.");
+      if (balanceOf >= 2) {
+        alert("지갑당 2개만 민팅이 가능합니다.");
         setMyNft(balanceOf);
         console.log(myNft);
         return;
@@ -175,14 +174,13 @@ const Launchpad = ({ account, setAccount }) => {
                     d="M681.469 402.456C669.189 395.312 653.224 395.312 639.716 402.456L543.928 457.228L478.842 492.949L383.055 547.721C370.774 554.865 354.81 554.865 341.301 547.721L265.162 504.856C252.882 497.712 244.286 484.614 244.286 470.325V385.786C244.286 371.498 251.654 358.4 265.162 351.256L340.073 309.581C352.353 302.437 368.318 302.437 381.827 309.581L456.737 351.256C469.018 358.4 477.614 371.498 477.614 385.786V440.558L542.7 403.646V348.874C542.7 334.586 535.332 321.488 521.824 314.344L383.055 235.758C370.774 228.614 354.81 228.614 341.301 235.758L200.076 314.344C186.567 321.488 179.199 334.586 179.199 348.874V507.237C179.199 521.525 186.567 534.623 200.076 541.767L341.301 620.353C353.582 627.498 369.546 627.498 383.055 620.353L478.842 566.772L543.928 529.86L639.716 476.279C651.996 469.135 667.961 469.135 681.469 476.279L756.38 517.953C768.66 525.098 777.257 538.195 777.257 552.484V637.023C777.257 651.312 769.888 664.409 756.38 671.553L681.469 714.419C669.189 721.563 653.224 721.563 639.716 714.419L564.805 672.744C552.525 665.6 543.928 652.502 543.928 638.214V583.442L478.842 620.353V675.125C478.842 689.414 486.21 702.512 499.719 709.656L640.944 788.242C653.224 795.386 669.189 795.386 682.697 788.242L823.922 709.656C836.203 702.512 844.799 689.414 844.799 675.125V516.763C844.799 502.474 837.431 489.377 823.922 482.232L681.469 402.456Z"
                   ></path>
                 </svg>{" "}
-                <div className="ml-4 font-bold text-2xl">0.01 MATIC</div>
+                <div className="ml-4 font-bold text-2xl">Free Mint</div>
               </div>
-              {myNft == 0 ? (
+              {myNft <= 1 ? (
                 <button
                   id="mintButton"
                   className="border border-yellow-300 shadow-sm shadow-yellow-600 text-2xl px-5 py-4 mt-8 rounded-xl text-yellow-300 font-bold hover:bg-yellow-300 hover:text-gray-900"
                   onClick={onClickMint}
-                  disabled={false}
                 >
                   MINT
                 </button>
@@ -195,7 +193,7 @@ const Launchpad = ({ account, setAccount }) => {
               )}
             </div>
             <div className="mt-4">
-              <span className="text-red-400 font-bold">지갑 당 1개</span> 민팅
+              <span className="text-red-400 font-bold">지갑 당 2개</span> 민팅
               가능 합니다.
             </div>
             <div>
@@ -207,15 +205,6 @@ const Launchpad = ({ account, setAccount }) => {
       </div>
       <div className="flex items-center mt-28 mb-10">
         <div className=" font-bold text-4xl">Minted NFT</div>
-        <div>
-          <a
-            href="https://testnets.opensea.io/account"
-            target="_blank"
-            className="bg-blue-500 w-8 h-8 rounded-full flex justify-center items-center text-white ml-4"
-          >
-            <SiOpensea size={20} />
-          </a>
-        </div>
       </div>
       <div className="flex flex-col justify-between items-center py-16 border border-gray-600 rounded-2xl shadow-md shadow-gray-600">
         {nftMetadata ? (
@@ -245,7 +234,15 @@ const Launchpad = ({ account, setAccount }) => {
             </div>
           </>
         ) : (
-          <div>MINTING 가능합니다.</div>
+          <>
+            <div className="font-bold text-3xl">
+              첫 번째 민트 사진은 불러오지 못합니다 흑흑 ㅠㅠ 두 번 하시면 두
+              번째 사진은 나옵니다!
+            </div>
+            <div className="font-bold text-3xl">
+              Collection 보기 눌러서 오픈씨로 이동가능합니다.
+            </div>
+          </>
         )}
       </div>
     </div>
